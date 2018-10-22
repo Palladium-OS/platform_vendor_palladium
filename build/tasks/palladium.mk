@@ -37,6 +37,7 @@ otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
 palladium: otapackage
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(PALLADIUM_TARGET_PACKAGE)
 	$(hide) $(SHA256) $(PALLADIUM_TARGET_PACKAGE) | sed "s|$(PRODUCT_OUT)/||" > $(PALLADIUM_TARGET_PACKAGE).sha256sum
+	$(hide) ./vendor/palladium/tools/generate_json_build_info.sh $(PALLADIUM_TARGET_PACKAGE)
 	@echo -e ""
 	@echo -e "${cya}Building ${bldcya}Palladium ! ${txtrst}";
 	@echo -e ""
