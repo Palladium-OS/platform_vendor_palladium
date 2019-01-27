@@ -123,6 +123,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     StitchImage
 
+# Customdoze
+PRODUCT_PACKAGES += \
+    CustomDoze
+
 # Extra tools in Palladium
 PRODUCT_PACKAGES += \
     7z \
