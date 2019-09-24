@@ -81,7 +81,7 @@ include vendor/palladium/config/fonts.mk
 
 # Gapps
 ifeq ($(USE_GAPPS),true)
-$(call inherit-product, vendor/gapps/gapps.mk)
+$(call inherit-product-if-exists, vendor/gms/products/gms.mk)
 endif
 
 
@@ -110,7 +110,8 @@ $(call inherit-product, vendor/palladium/bootanimation/bootanimation.mk)
 
 # Config
 PRODUCT_PACKAGES += \
-    SimpleDeviceConfig
+    SimpleDeviceConfig \
+    SettingsIntelligenceGooglePrebuilt
 
 # Storage manager
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
@@ -119,6 +120,10 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 # These packages are excluded from user builds
 PRODUCT_PACKAGES_DEBUG += \
     procmem
+
+# Permissions
+PRODUCT_COPY_FILES += \
+    vendor/palladium/config/permissions/privapp-permissions-palladium-product.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-palladium.xml
 
 # Root
 PRODUCT_PACKAGES += \
