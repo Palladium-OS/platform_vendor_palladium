@@ -9,6 +9,9 @@ PALLADIUM_BUILD_SUPPORT_URL ?= https://t.me/palladiumos_chat
 
 ifeq ($(PALLADIUM_BUILD_VARIANT), GAPPS)
 PALLADIUM_BUILD_VARIANT := GAPPS
+
+PRODUCT_PACKAGES += \
+    PalladiumThemesStub
 endif
 
 # Palladium Release
