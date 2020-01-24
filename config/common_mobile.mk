@@ -25,11 +25,6 @@ endif
 PRODUCT_PACKAGES += \
     charger_res_images
 
-ifneq ($(WITH_PALLADIUM_CHARGER),false)
-PRODUCT_PACKAGES += \
-    palladium_charger_animation
-endif
-
 # Customizations
 PRODUCT_PACKAGES += \
     NavigationBarMode2ButtonOverlay
