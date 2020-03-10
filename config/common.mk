@@ -106,6 +106,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     SimpleDeviceConfig
 
+# Seedvault
+PRODUCT_PACKAGES += \
+    Seedvault
+
 # Extra tools in Palladium
 PRODUCT_PACKAGES += \
     7z \
