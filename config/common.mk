@@ -215,6 +215,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/palladium/overlay
 DEVICE_PACKAGE_OVERLAYS += vendor/palladium/overlay/common
 
+# Plugins
+include packages/apps/Plugins/plugins.mk
+
+
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
 -include vendor/palladium/config/partner_gms.mk
 
