@@ -39,6 +39,7 @@ SOONG_CONFIG_palladiumGlobalVars += \
     target_ld_shim_libs \
     target_process_sdk_version_override \
     target_surfaceflinger_fod_lib \
+    target_uses_prebuilt_dynamic_partitions \
     uses_camera_parameter_lib
 
 SOONG_CONFIG_NAMESPACES += palladiumNvidiaVars
@@ -67,6 +68,7 @@ SOONG_CONFIG_palladiumGlobalVars_has_legacy_camera_hal1 := $(TARGET_HAS_LEGACY_C
 SOONG_CONFIG_palladiumGlobalVars_has_memfd_backport := $(TARGET_HAS_MEMFD_BACKPORT)
 SOONG_CONFIG_palladiumGlobalVars_ignores_ftp_pptp_conntrack_failure := $(TARGET_IGNORES_FTP_PPTP_CONNTRACK_FAILURE)
 SOONG_CONFIG_palladiumGlobalVars_needs_netd_direct_connect_rule := $(TARGET_NEEDS_NETD_DIRECT_CONNECT_RULE)
+SOONG_CONFIG_palladiumGlobalVars_target_uses_prebuilt_dynamic_partitions := $(TARGET_USES_PREBUILT_DYNAMIC_PARTITIONS)
 SOONG_CONFIG_palladiumNvidiaVars_uses_nv_enhancements := $(NV_ANDROID_FRAMEWORK_ENHANCEMENTS)
 SOONG_CONFIG_palladiumQcomVars_should_wait_for_qsee := $(TARGET_KEYMASTER_WAIT_FOR_QSEE)
 SOONG_CONFIG_palladiumQcomVars_supports_extended_compress_format := $(AUDIO_FEATURE_ENABLED_EXTENDED_COMPRESS_FORMAT)
