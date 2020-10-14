@@ -1,12 +1,4 @@
 bootstrap_go_package {
-    name: "soong-palladium",
-    pkgPath: "palladium/soong/android",
-    srcs: [
-        "android/variable.go",
-    ],
-}
-
-bootstrap_go_package {
     name: "soong-palladium-generator",
     pkgPath: "palladium/soong/generator",
     deps: [
