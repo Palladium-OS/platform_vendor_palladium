@@ -19,14 +19,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     charger_res_images
 
-# Custom off-mode charger
-ifeq ($(WITH_PALLADIUM_CHARGER),true)
-PRODUCT_PACKAGES += \
-    palladium_charger_res_images \
-    font_log.png \
-    libhealthd.palladium
-endif
-
 # Customizations
 PRODUCT_PACKAGES += \
     NavigationBarMode2ButtonOverlay
