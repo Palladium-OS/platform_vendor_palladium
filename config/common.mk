@@ -158,6 +158,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     vendor/palladium/prebuilt/common/etc/init/init.palladium-updater.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.palladium-updater.rc
 
+# TextClassifier
+PRODUCT_PACKAGES += \
+    libtextclassifier_annotator_en_model \
+    libtextclassifier_annotator_universal_model \
+    libtextclassifier_actions_suggestions_universal_model \
+    libtextclassifier_lang_id_model
+
 # Themes
 PRODUCT_PACKAGES += \
     PalladiumBlackTheme \
