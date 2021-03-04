@@ -178,6 +178,12 @@ endif
 PRODUCT_DEXPREOPT_SPEED_APPS += \
     SystemUI 
 
+# IORap
+PRODUCT_PROPERTY_OVERRIDES += \
+    iorapd.perfetto.enable=true \
+    iorapd.readahead.enable=true \
+    ro.iorapd.enable=true
+
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/palladium/overlay
 DEVICE_PACKAGE_OVERLAYS += vendor/palladium/overlay/common
 
