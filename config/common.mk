@@ -117,7 +117,8 @@ TARGET_SCREEN_HEIGHT ?= 1920
 # Themes
 PRODUCT_PACKAGES += \
     pdC \
-    ThemePicker
+    ThemePicker \
+    GamingMode
 
 # Config
 PRODUCT_PACKAGES += \
