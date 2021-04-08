@@ -1,6 +1,7 @@
 # Palladium packages
 PRODUCT_PACKAGES += \
-    ThemePicker
+    ThemePicker \
+    TouchGestures
 
 # Extra tools in Palladium
 PRODUCT_PACKAGES += \
