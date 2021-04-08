@@ -148,7 +148,8 @@ $(call inherit-product, vendor/palladium/prebuilt/bootanimation/bootanimation.mk
 # Palladium packages
 PRODUCT_PACKAGES += \
     PalladiumWallpaperStub \
-    RepainterServicePriv
+    RepainterServicePriv \
+    TouchGestures
 
 PRODUCT_COPY_FILES += \
     vendor/palladium/prebuilt/common/etc/init/init.palladium-updater.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.palladium-updater.rc
