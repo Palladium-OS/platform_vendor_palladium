@@ -3,6 +3,11 @@ PRODUCT_PACKAGES += \
     Updater \
     ThemePicker
 
+# Navbar
+PRODUCT_PACKAGES += \
+    GesturalNavigationOverlayLong \
+    GesturalNavigationOverlayMedium
+
 # Extra tools in Palladium
 PRODUCT_PACKAGES += \
     7z \
