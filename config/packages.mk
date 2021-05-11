@@ -2,6 +2,11 @@
 PRODUCT_PACKAGES += \
     ThemePicker
 
+# Custom Overlays
+PRODUCT_PACKAGES += \
+    GesturalNavigationOverlayLong \
+    GesturalNavigationOverlayMedium
+
 # Extra tools in Palladium
 PRODUCT_PACKAGES += \
     7z \
