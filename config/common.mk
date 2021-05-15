@@ -81,6 +81,11 @@ include vendor/palladium/config/palladium_audio.mk
 # Include vendor palladium-molecules
 include vendor/palladium_molecules/palladium_molecules.mk
 
+# Include Lawnchair
+ifeq ($(USE_LAWNCHAIR),true)
+include packages/apps/Lawnchair/lawnchair.mk
+endif
+
 # Bootanimation
 include vendor/palladium/bootanimation/bootanimation.mk
 
