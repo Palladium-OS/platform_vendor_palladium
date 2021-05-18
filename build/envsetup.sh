@@ -613,7 +613,13 @@ function palladiumrebase() {
 }
 
 function mka() {
-    m -j "$@"
+    if [ "$1" = "signed-zip" ]; then
+        m -j target-files-package otatools
+        croot
+        source vendor/palladium/scripts/sign.sh
+    else
+        m -j "$@"
+    fi
 }
 
 function cmka() {
