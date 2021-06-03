@@ -617,6 +617,7 @@ function mka() {
         if m -j target-files-package otatools; then
             croot
             source vendor/palladium/scripts/sign.sh
+            source vendor/palladium/scripts/update.sh
         fi
     else
         m -j "$@"
