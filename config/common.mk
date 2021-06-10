@@ -137,9 +137,7 @@ PRODUCT_PACKAGES += \
 # Extra tools in Palladium
 PRODUCT_PACKAGES += \
     7z \
-    awk \
     bash \
-    bzip2 \
     curl \
     getcap \
     htop \
