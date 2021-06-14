@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # Copyright (C) 2016 The CyanogenMod Project
-# Copyright (C) 2017-2019 The LineageOS Project
+# Copyright (C) 2021 Palladium-OS
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -47,7 +47,7 @@ trap cleanup 0
 #
 # $1: device name
 # $2: vendor name
-# $3: Lineage root directory
+# $3: Palladium root directory
 # $4: is common device - optional, default to false
 # $5: cleanup - optional, default to true
 # $6: custom vendor makefile name - optional, default to false
@@ -68,15 +68,15 @@ function setup_vendor() {
         exit 1
     fi
 
-    export LINEAGE_ROOT="$3"
-    if [ ! -d "$LINEAGE_ROOT" ]; then
-        echo "\$LINEAGE_ROOT must be set and valid before including this script!"
+    export PALLADIUM_ROOT="$3"
+    if [ ! -d "$PALLADIUM_ROOT" ]; then
+        echo "\$PALLADIUM_ROOT must be set and valid before including this script!"
         exit 1
     fi
 
     export OUTDIR=vendor/"$VENDOR"/"$DEVICE"
-    if [ ! -d "$LINEAGE_ROOT/$OUTDIR" ]; then
-        mkdir -p "$LINEAGE_ROOT/$OUTDIR"
+    if [ ! -d "$PALLADIUM_ROOT/$OUTDIR" ]; then
+        mkdir -p "$PALLADIUM_ROOT/$OUTDIR"
     fi
 
     VNDNAME="$6"
@@ -84,10 +84,10 @@ function setup_vendor() {
         VNDNAME="$DEVICE"
     fi
 
-    export PRODUCTMK="$LINEAGE_ROOT"/"$OUTDIR"/"$VNDNAME"-vendor.mk
-    export ANDROIDBP="$LINEAGE_ROOT"/"$OUTDIR"/Android.bp
-    export ANDROIDMK="$LINEAGE_ROOT"/"$OUTDIR"/Android.mk
-    export BOARDMK="$LINEAGE_ROOT"/"$OUTDIR"/BoardConfigVendor.mk
+    export PRODUCTMK="$PALLADIUM_ROOT"/"$OUTDIR"/"$VNDNAME"-vendor.mk
+    export ANDROIDBP="$PALLADIUM_ROOT"/"$OUTDIR"/Android.bp
+    export ANDROIDMK="$PALLADIUM_ROOT"/"$OUTDIR"/Android.mk
+    export BOARDMK="$PALLADIUM_ROOT"/"$OUTDIR"/BoardConfigVendor.mk
 
     if [ "$4" == "true" ] || [ "$4" == "1" ]; then
         COMMON=1
@@ -935,11 +935,11 @@ function write_blueprint_header() {
     fi
 
     if [ $BLUEPRINT_INITIAL_COPYRIGHT_YEAR -eq $YEAR ]; then
-        printf " * Copyright (C) $YEAR The LineageOS Project\n" >> $1
+        printf " * Copyright (C) $YEAR Palladium-OS\n" >> $1
     elif [ $BLUEPRINT_INITIAL_COPYRIGHT_YEAR -le 2019 ]; then
-        printf " * Copyright (C) 2019-$YEAR The LineageOS Project\n" >> $1
+        printf " * Copyright (C) 2019-$YEAR Palladium-OS\n" >> $1
     else
-        printf " * Copyright (C) $BLUEPRINT_INITIAL_COPYRIGHT_YEAR-$YEAR The LineageOS Project\n" >> $1
+        printf " * Copyright (C) $BLUEPRINT_INITIAL_COPYRIGHT_YEAR-$YEAR Palladium-OS\n" >> $1
     fi
 
     cat << EOF >> $1
@@ -988,16 +988,16 @@ function write_makefile_header() {
             printf "# Copyright (C) 2016 The CyanogenMod Project\n" > $1
         fi
         if [ $YEAR -eq 2017 ]; then
-            printf "# Copyright (C) 2017 The LineageOS Project\n" >> $1
+            printf "# Copyright (C) 2017 Palladium-OS\n" >> $1
         elif [ $INITIAL_COPYRIGHT_YEAR -eq $YEAR ]; then
-            printf "# Copyright (C) $YEAR The LineageOS Project\n" >> $1
+            printf "# Copyright (C) $YEAR Palladium-OS\n" >> $1
         elif [ $INITIAL_COPYRIGHT_YEAR -le 2017 ]; then
-            printf "# Copyright (C) 2017-$YEAR The LineageOS Project\n" >> $1
+            printf "# Copyright (C) 2017-$YEAR Palladium-OS\n" >> $1
         else
-            printf "# Copyright (C) $INITIAL_COPYRIGHT_YEAR-$YEAR The LineageOS Project\n" >> $1
+            printf "# Copyright (C) $INITIAL_COPYRIGHT_YEAR-$YEAR Palladium-OS\n" >> $1
         fi
     else
-        printf "# Copyright (C) $YEAR The LineageOS Project\n" > $1
+        printf "# Copyright (C) $YEAR Palladium-OS\n" > $1
     fi
 
     cat << EOF >> $1
@@ -1242,7 +1242,7 @@ function get_file() {
 # Convert apk|jar .odex in the corresposing classes.dex
 #
 function oat2dex() {
-    local LINEAGE_TARGET="$1"
+    local PALLADIUM_TARGET="$1"
     local OEM_TARGET="$2"
     local SRC="$3"
     local TARGET=
@@ -1250,16 +1250,16 @@ function oat2dex() {
     local HOST="$(uname | tr '[:upper:]' '[:lower:]')"
 
     if [ -z "$BAKSMALIJAR" ] || [ -z "$SMALIJAR" ]; then
-        export BAKSMALIJAR="$LINEAGE_ROOT"/prebuilts/tools-lineage/common/smali/baksmali.jar
-        export SMALIJAR="$LINEAGE_ROOT"/prebuilts/tools-lineage/common/smali/smali.jar
+        export BAKSMALIJAR="$PALLADIUM_ROOT"/prebuilts/tools-palladium/common/smali/baksmali.jar
+        export SMALIJAR="$PALLADIUM_ROOT"/prebuilts/tools-palladium/common/smali/smali.jar
     fi
 
     if [ -z "$VDEXEXTRACTOR" ]; then
-        export VDEXEXTRACTOR="$LINEAGE_ROOT"/prebuilts/tools-lineage/${HOST}-x86/bin/vdexExtractor
+        export VDEXEXTRACTOR="$PALLADIUM_ROOT"/prebuilts/tools-palladium/${HOST}-x86/bin/vdexExtractor
     fi
 
     if [ -z "$CDEXCONVERTER" ]; then
-        export CDEXCONVERTER="$LINEAGE_ROOT"/prebuilts/tools-lineage/${HOST}-x86/bin/compact_dex_converter
+        export CDEXCONVERTER="$PALLADIUM_ROOT"/prebuilts/tools-palladium/${HOST}-x86/bin/compact_dex_converter
     fi
 
     # Extract existing boot.oats to the temp folder
@@ -1279,11 +1279,11 @@ function oat2dex() {
         FULLY_DEODEXED=1 && return 0 # system is fully deodexed, return
     fi
 
-    if [ ! -f "$LINEAGE_TARGET" ]; then
+    if [ ! -f "$PALLADIUM_TARGET" ]; then
         return;
     fi
 
-    if grep "classes.dex" "$LINEAGE_TARGET" >/dev/null; then
+    if grep "classes.dex" "$PALLADIUM_TARGET" >/dev/null; then
         return 0 # target apk|jar is already odexed, return
     fi
 
@@ -1311,7 +1311,7 @@ function oat2dex() {
                 java -jar "$BAKSMALIJAR" deodex -o "$TMPDIR/dexout" -b "$BOOTOAT" -d "$TMPDIR" "$TMPDIR/$(basename "$OAT")"
                 java -jar "$SMALIJAR" assemble "$TMPDIR/dexout" -o "$TMPDIR/classes.dex"
             fi
-        elif [[ "$LINEAGE_TARGET" =~ .jar$ ]]; then
+        elif [[ "$PALLADIUM_TARGET" =~ .jar$ ]]; then
             JAROAT="$TMPDIR/system/framework/$ARCH/boot-$(basename ${OEM_TARGET%.*}).oat"
             JARVDEX="/system/framework/boot-$(basename ${OEM_TARGET%.*}).vdex"
             if [ ! -f "$JAROAT" ]; then
@@ -1506,7 +1506,7 @@ function extract() {
     local FIXUP_HASHLIST=( ${PRODUCT_COPY_FILES_FIXUP_HASHES[@]} ${PRODUCT_PACKAGES_FIXUP_HASHES[@]} )
     local PRODUCT_COPY_FILES_COUNT=${#PRODUCT_COPY_FILES_LIST[@]}
     local COUNT=${#FILELIST[@]}
-    local OUTPUT_ROOT="$LINEAGE_ROOT"/"$OUTDIR"/proprietary
+    local OUTPUT_ROOT="$PALLADIUM_ROOT"/"$OUTDIR"/proprietary
     local OUTPUT_TMP="$TMPDIR"/"$OUTDIR"/proprietary
 
     if [ "$SRC" = "adb" ]; then
@@ -1543,7 +1543,7 @@ function extract() {
                 fi
                 if [ -a "$DUMPDIR"/"$PARTITION".new.dat ]; then
                     echo "Converting "$PARTITION".new.dat to "$PARTITION".img"
-                    python "$LINEAGE_ROOT"/vendor/lineage/build/tools/sdat2img.py "$DUMPDIR"/"$PARTITION".transfer.list "$DUMPDIR"/"$PARTITION".new.dat "$DUMPDIR"/"$PARTITION".img 2>&1
+                    python "$PALLADIUM_ROOT"/vendor/palladium/build/tools/sdat2img.py "$DUMPDIR"/"$PARTITION".transfer.list "$DUMPDIR"/"$PARTITION".new.dat "$DUMPDIR"/"$PARTITION".img 2>&1
                     rm -rf "$DUMPDIR"/"$PARTITION".new.dat "$DUMPDIR"/"$PARTITION"
                     mkdir "$DUMPDIR"/"$PARTITION" "$DUMPDIR"/tmp
                     echo "Requesting sudo access to mount the "$PARTITION".img"
@@ -1633,7 +1633,7 @@ function extract() {
             printf '    + keeping pinned file with hash %s\n' "${HASH}"
         else
             FOUND=false
-            # Try Lineage target first.
+            # Try Palladium target first.
             # Also try to search for files stripped of
             # the "/system" prefix, if we're actually extracting
             # from a system image.
@@ -1721,7 +1721,7 @@ function extract_firmware() {
     local FILELIST=( ${PRODUCT_COPY_FILES_LIST[@]} )
     local COUNT=${#FILELIST[@]}
     local SRC="$2"
-    local OUTPUT_DIR="$LINEAGE_ROOT"/"$OUTDIR"/radio
+    local OUTPUT_DIR="$PALLADIUM_ROOT"/"$OUTDIR"/radio
 
     if [ "$VENDOR_RADIO_STATE" -eq "0" ]; then
         echo "Cleaning firmware output directory ($OUTPUT_DIR).."
