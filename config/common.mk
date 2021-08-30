@@ -118,6 +118,7 @@ TARGET_SCREEN_HEIGHT ?= 1920
 PRODUCT_PACKAGES += \
     pdC \
     ThemePicker \
+    SoftAPManager \
     GamingMode
 
 # Config
