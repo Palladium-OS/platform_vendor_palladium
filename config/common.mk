@@ -227,5 +227,5 @@ include packages/apps/Plugins/plugins.mk
 
 ifeq ($(PALLADIUM_BUILD_VARIANT), GAPPS)
 # GApps
-include vendor/gapps/config.mk
+include vendor/gms/products/gms.mk
 endif
