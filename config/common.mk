@@ -116,6 +116,7 @@ TARGET_SCREEN_HEIGHT ?= 1920
 
 # Themes
 PRODUCT_PACKAGES += \
+    pdC \
     ThemePicker
 
 # Config

@@ -1,0 +1,13 @@
+//
+// Prebuilt apps for Palladium-OS
+//
+
+// Palladium Community
+android_app_import {
+    name: "pdC",
+    apk: "pdC.apk",
+    presigned: true,
+    dex_preopt: {
+        enabled: false,
+    },
+}
