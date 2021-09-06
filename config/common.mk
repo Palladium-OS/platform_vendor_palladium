@@ -135,6 +135,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     CustomDoze
 
+# TouchGestures
+PRODUCT_PACKAGES += \
+    TouchGestures
+
 # Extra tools in Palladium
 PRODUCT_PACKAGES += \
     7z \
