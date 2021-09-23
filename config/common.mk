@@ -132,6 +132,10 @@ PRODUCT_PACKAGES += \
 # StitchImage
 PRODUCT_PACKAGES += \
     StitchImage
+    
+ # OmniJaws
+PRODUCT_PACKAGES += \
+    OmniJaws
 
 # Customdoze
 PRODUCT_PACKAGES += \
