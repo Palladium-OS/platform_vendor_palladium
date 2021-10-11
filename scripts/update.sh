@@ -20,7 +20,7 @@ linenr=$(grep -n "ro.system.build.date.utc" $buildprop | cut -d ':' -f1)
 datetime=$(sed -n $linenr'p' < $buildprop | cut -d '=' -f2)
 id=$(md5sum "$OUT/$zip" | cut -d ' ' -f1)
 size=$(stat -c "%s" "$OUT/$zip")
-version=$(echo "$zip" | cut -d '-' -f3)
+version=$(echo "$zip" | cut -d '-' -f2)
 echo '{
 	"response": [
 		{
@@ -29,7 +29,7 @@ echo '{
 			"id": "'$id'",
 			"romtype": "'$romtype'",
 			"size": '$size',
-			"url": "https:\/\/downloads.palladiumos.com\/'$device'\/'$zip'",
+			"url": "https://downloads.palladiumos.com/'$device'/'$zip'",
 			"version": "'$version'"
 		}
 	]
