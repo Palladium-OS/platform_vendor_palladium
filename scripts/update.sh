@@ -5,7 +5,7 @@ device=$(echo $TARGET_PRODUCT | cut -d '_' -f2)
 buildprop=$OUT/system/build.prop
 linen=$(grep -n "ro.palladium.build.type" $buildprop | cut -d ':' -f1)
 romtype=$(sed -n $linen'p' < $buildprop | cut -d '=' -f2)
-variant=$(echo $zip | cut -d '-' -f4)
+variant=$(echo $zip | cut -d '-' -f6)
 name=$device'_'$variant.json
 
 if [ "$romtype" != "OFFICIAL" ]; then
