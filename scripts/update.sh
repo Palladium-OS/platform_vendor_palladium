@@ -29,7 +29,7 @@ echo '{
 			"id": "'$id'",
 			"romtype": "'$romtype'",
 			"size": '$size',
-			"url": "https://downloads.palladiumos.com/'$device'/'$zip'",
+			"url": "https://index.palladiumos.com/'$device'/'$zip'",
 			"version": "'$version'"
 		}
 	]
