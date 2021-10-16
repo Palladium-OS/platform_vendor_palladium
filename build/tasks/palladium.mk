@@ -21,7 +21,7 @@
 # Palladium OTA update package
 
 PALLADIUM_TARGET_PACKAGE := $(PRODUCT_OUT)/$(PALLADIUM_VERSION).zip
-MD5 := prebuilts/build-tools/path/$(HOST_PREBUILT_TAG)/md5sum
+SHA256 := prebuilts/build-tools/path/$(HOST_PREBUILT_TAG)/sha256sum
 
 
 CL_RED="\033[31m"
@@ -36,7 +36,7 @@ CL_RST="\033[0m"
 otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
 palladium: otapackage
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(PALLADIUM_TARGET_PACKAGE)
-	$(hide) $(MD5) $(PALLADIUM_TARGET_PACKAGE) | sed "s|$(PRODUCT_OUT)/||" > $(PALLADIUM_TARGET_PACKAGE).md5sum
+	$(hide) $(SHA256) $(PALLADIUM_TARGET_PACKAGE) | sed "s|$(PRODUCT_OUT)/||" > $(PALLADIUM_TARGET_PACKAGE).sha256sum
 	@echo -e ""
 	@echo -e "${cya}Building ${bldcya}Palladium ! ${txtrst}";
 	@echo -e ""
@@ -56,7 +56,7 @@ palladium: otapackage
 	@echo -e ${CL_CYN}"                                                                  "${CL_CYN}
 	@echo -e ${CL_RED}"******************************************************************"                                                           
 	@echo -e ${CL_YLW}"Zip: "${CL_YLW} $(PALLADIUM_TARGET_PACKAGE)${CL_YLW}
-	@echo -e ${CL_YLW}"MD5: "${CL_YLW}" `cat $(PALLADIUM_TARGET_PACKAGE).md5sum | awk '{print $$1}' `"${CL_YLW}
+	@echo -e ${CL_YLW}"SHA256: "${CL_YLW}" `cat $(PALLADIUM_TARGET_PACKAGE).sha256sum | awk '{print $$1}' `"${CL_YLW}
 	@echo -e ${CL_YLW}"Size:"${CL_YLW}" `du -sh $(PALLADIUM_TARGET_PACKAGE) | awk '{print $$1}' `"${CL_YLW}
 	@echo -e ${CL_YLW}"id:"${CL_YLW}"`sha256sum $(PALLADIUM_TARGET_PACKAGE) | cut -d ' ' -f 1`"${CL_YLW}
 	@echo -e ${CL_GRN}"==================================================================="${CL_GRN}
