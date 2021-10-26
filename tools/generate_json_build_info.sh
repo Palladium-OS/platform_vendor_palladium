@@ -14,6 +14,7 @@ if [ "$1" ]; then
             datetime=$(date +%s)
             id=$(sha256sum $file_path | awk '{ print $1 }')
             link="https://dump.palladiumos.com/${device_code}/${file_name}"
+            num_version=$(grep ro\.palladium\.num\.version ./out/target/product/${device_code}/system/build.prop | cut -d= -f2);
             echo "{" > $file_path.json
             echo "  \"response\": [" >> $file_path.json
             echo "    {" >> $file_path.json
@@ -23,7 +24,7 @@ if [ "$1" ]; then
             echo "     \"romtype\": \"OFFICIAL\"," >> $file_path.json
             echo "     \"size\": ${file_size}," >> $file_path.json
             echo "     \"url\": \"${link}\"," >> $file_path.json
-            echo "     \"version\": \"2.0\"" >> $file_path.json
+            echo "     \"version\": \"${num_version}\"" >> $file_path.json
             echo "    }" >> $file_path.json
             echo "  ]" >> $file_path.json
             echo "}" >> $file_path.json
