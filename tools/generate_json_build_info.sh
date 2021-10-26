@@ -6,7 +6,8 @@ if [ "$1" ]; then
     echo "Generating .json"
     file_path=$1
     file_name=$(basename $file_path)
-    device_code=$(echo $file_name | cut -d'-' -f3)
+    device_code=$(echo $file_name | cut -d'-' -f4)
+    build_variant=$(echo $file_name | cut -d'-' -f6)
     if [ -f $file_path ]; then
         if [[ $file_name == *"OFFICIAL"* ]]; then # only generate for official builds
             file_size=$(stat -c%s $file_path)
@@ -14,6 +15,7 @@ if [ "$1" ]; then
             datetime=$(date +%s)
             id=$(sha256sum $file_path | awk '{ print $1 }')
             link="https://dump.palladiumos.com/${device_code}/${file_name}"
+            num_version=$(grep ro\.palladium\.num\.version ./out/target/product/${device_code}/system/build.prop | cut -d= -f2);
             echo "{" > $file_path.json
             echo "  \"response\": [" >> $file_path.json
             echo "    {" >> $file_path.json
@@ -23,12 +25,12 @@ if [ "$1" ]; then
             echo "     \"romtype\": \"OFFICIAL\"," >> $file_path.json
             echo "     \"size\": ${file_size}," >> $file_path.json
             echo "     \"url\": \"${link}\"," >> $file_path.json
-            echo "     \"version\": \"2.0\"" >> $file_path.json
+            echo "     \"version\": \"${num_version}\"" >> $file_path.json
             echo "    }" >> $file_path.json
             echo "  ]" >> $file_path.json
             echo "}" >> $file_path.json
-            mv "${file_path}.json" "${OUT}/${device_code}.json"
-            echo -e "${GREEN}Done generating ${YELLOW}${device_code}.json${NC}"
+            mv "${file_path}.json" "${OUT}/${device_code}_${build_variant}.json"
+            echo -e "${GREEN}Done generating ${YELLOW}${device_code}_${build_variant}.json${NC}"
         else
             echo -e "${YELLOW}Skipped generating json for a non-official build${NC}"
         fi
