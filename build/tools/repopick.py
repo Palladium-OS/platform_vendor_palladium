@@ -153,8 +153,8 @@ def fetch_query(remote_url, query):
 
 
 if __name__ == '__main__':
-    # Default to LineageOS Gerrit
-    default_gerrit = 'https://review.lineageos.org'
+    # Default to Palladium-OS Gerrit
+    default_gerrit = 'https://gerrit.palladiumos.com'
 
     parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter, description=textwrap.dedent('''\
         repopick.py is a utility to simplify the process of cherry picking
@@ -259,7 +259,7 @@ if __name__ == '__main__':
     # {project: {path, revision}}
 
     for project in projects:
-        name = project.get('name')
+        name = ("Palladium-OS/")+project.get('name')
         # when name and path are equal, "repo manifest" doesn't return a path at all, so fall back to name
         path = project.get('path', name)
         revision = project.get('upstream')
@@ -437,9 +437,9 @@ if __name__ == '__main__':
                 print('Trying to fetch the change from GitHub')
 
             if args.pull:
-                cmd = ['git pull --no-edit github', item['fetch'][method]['ref']]
+                cmd = ['git pull --no-edit palladium', item['fetch'][method]['ref']]
             else:
-                cmd = ['git fetch github', item['fetch'][method]['ref']]
+                cmd = ['git fetch palladium', item['fetch'][method]['ref']]
             if args.quiet:
                 cmd.append('--quiet')
             else:
