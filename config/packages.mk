@@ -1,6 +1,5 @@
 # Palladium packages
 PRODUCT_PACKAGES += \
-    Updater \
     ThemePicker
 
 # Extra tools in Palladium
