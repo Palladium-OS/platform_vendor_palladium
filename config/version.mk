@@ -31,8 +31,8 @@ endif
 ifeq ($(PALLADIUM_BUILD_TYPE), OFFICIAL)
 
 # Updater
-# PRODUCT_PACKAGES += \
-#     Updater
+  PRODUCT_PACKAGES += \
+       Updater
 
   OFFICIAL_DEVICES = $(shell cat vendor/palladium/palladium.devices)
   FOUND_DEVICE =  $(filter $(PALLADIUM_BUILD), $(OFFICIAL_DEVICES))
