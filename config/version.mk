@@ -16,7 +16,7 @@
 
 # Versioning System
 PALLADIUM_CODENAME := Aries
-PALLADIUM_NUM_VER := 2.0
+PALLADIUM_NUM_VER := 2.0.1
 
 TARGET_PRODUCT_SHORT := $(subst palladium_,,$(PALLADIUM_BUILD_TYPE))
 
