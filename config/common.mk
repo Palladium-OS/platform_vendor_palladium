@@ -106,6 +106,11 @@ PRODUCT_PRODUCT_PROPERTIES += \
     ro.com.google.ime.kb_pad_land_l=64 \
     ro.com.google.ime.kb_pad_land_r=64
 
+# Gboard configuration
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.com.google.ime.theme_id=5 \
+    ro.com.google.ime.system_lm_dir=/product/usr/share/ime/google/d3_lms
+
 # Include AOSP audio files
 include vendor/palladium/config/aosp_audio.mk
 
@@ -162,6 +167,20 @@ endif
 # Root
 PRODUCT_PACKAGES += \
     adb_root
+
+# SetupWizard configuration
+PRODUCT_PRODUCT_PROPERTIES += \
+    setupwizard.feature.baseline_setupwizard_enabled=true \
+    ro.setupwizard.enterprise_mode=1 \
+    ro.setupwizard.rotation_locked=true \
+    setupwizard.enable_assist_gesture_training=true \
+    setupwizard.theme=glif_v3_light \
+    setupwizard.feature.skip_button_use_mobile_data.carrier1839=true \
+    setupwizard.feature.show_pai_screen_in_main_flow.carrier1839=false \
+    setupwizard.feature.show_pixel_tos=false \
+    setupwizard.feature.show_support_link_in_deferred_setup=false \
+    setupwizard.feature.day_night_mode_enabled=true \
+    setupwizard.feature.portal_notification=true
 
 # Dex preopt
 PRODUCT_DEXPREOPT_SPEED_APPS += \
