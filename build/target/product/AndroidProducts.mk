@@ -15,9 +15,7 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/palladium_arm64.mk \
-    $(LOCAL_DIR)/palladium_arm64_ab.mk
+    $(LOCAL_DIR)/palladium_arm64.mk
 
 COMMON_LUNCH_CHOICES := \
-    palladium_arm64-userdebug \
-    palladium_arm64_ab-userdebug
+    palladium_arm64-userdebug 
