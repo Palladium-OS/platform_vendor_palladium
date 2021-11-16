@@ -50,6 +50,7 @@ ifeq ($(filter-out OFFICIAL,$(PALLADIUM_BUILD_TYPE)),)
 endif
 
 # Set all versions
+PALLADIUM_DATETIME := $(shell date +%s)
 BUILD_DATE := $(shell date -u +%Y%m%d)
 BUILD_TIME := $(shell date -u +%H%M)
 PALLADIUM_BUILD_VERSION := $(PALLADIUM_NUM_VER)-$(PALLADIUM_CODENAME)

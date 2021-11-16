@@ -9,6 +9,7 @@ ADDITIONAL_SYSTEM_PROPERTIES += \
     ro.palladium.display.version=$(PALLADIUM_DISPLAY_VERSION) \
     ro.palladium.build.version=$(PALLADIUM_BUILD_VERSION) \
     ro.palladium.num.version=$(PALLADIUM_NUM_VER) \
+    ro.palladium.build.datetime=$(PALLADIUM_DATETIME) \
     ro.palladium.build.date=$(BUILD_DATE) \
     ro.palladium.build.variant=$(PALLADIUM_BUILD_VARIANT) \
     ro.palladium.buildtype=$(PALLADIUM_BUILD_TYPE) \
