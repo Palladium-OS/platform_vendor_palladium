@@ -84,6 +84,10 @@ ifeq ($(USE_GAPPS),true)
 $(call inherit-product-if-exists, vendor/gms/products/gms.mk)
 endif
 
+TARGET_BUILD_LAWNCHAIR ?= true
+ifeq ($(strip $(TARGET_BUILD_LAWNCHAIR)),true)
+include vendor/lawnchair/lawnchair.mk
+endif
 
 # Include AOSP audio files
 include vendor/palladium/config/aosp_audio.mk
