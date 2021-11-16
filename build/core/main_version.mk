@@ -16,6 +16,7 @@ endif
 ADDITIONAL_SYSTEM_PROPERTIES += \
     ro.palladium.display.version=$(PALLADIUM_DISPLAY_VERSION) \
     ro.palladium.build.version=$(PALLADIUM_BUILD_VERSION) \
+    ro.palladium.build.datetime=$(PALLADIUM_DATETIME) \
     ro.palladium.build.date=$(BUILD_DATE) \
     ro.palladium.buildtype=$(PALLADIUM_BUILD_TYPE) \
     ro.palladium.fingerprint=$(ROM_FINGERPRINT) \
