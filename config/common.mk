@@ -167,6 +167,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_DEXPREOPT_SPEED_APPS += \
     SystemUI
 
+# Inherit from rro_overlays config
+$(call inherit-product, vendor/palladium/config/rro_overlays.mk)
+
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/palladium/overlay
 PRODUCT_PACKAGE_OVERLAYS += vendor/palladium/overlay/common
 
