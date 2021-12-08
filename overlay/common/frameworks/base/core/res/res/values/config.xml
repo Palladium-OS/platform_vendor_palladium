@@ -194,4 +194,7 @@
     <!-- Whether to show estimate in QS header. Default to false in case there's not enough
      space -->
     <bool name="config_showBatteryEstimateQSBH">true</bool>
+
+    <!-- Suppress Intent Filter Verification Service crashes -->
+    <string translatable="false" name="config_appsNotReportingCrashes">com.android.statementservice</string>
 </resources>
