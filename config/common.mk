@@ -53,6 +53,10 @@ endif
 # Branding
 include vendor/palladium/config/version.mk
 
+# Pixel sysconfig from Pixel XL (Photos)
+PRODUCT_COPY_FILES += \
+    vendor/palladium/prebuilt/common/etc/sysconfig/pixel_2016_exclusive.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/pixel_2016_exclusive.xml 
+
 # Lineage-specific init rc file
 PRODUCT_COPY_FILES += \
     vendor/palladium/prebuilt/common/etc/init/init.lineage-system.rc:$(TARGET_COPY_OUT_PRODUCT)/etc/init/init.lineage-system.rc \
