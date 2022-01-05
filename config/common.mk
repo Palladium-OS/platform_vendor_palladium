@@ -175,3 +175,20 @@ PRODUCT_PACKAGE_OVERLAYS += vendor/palladium/overlay/common
 
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
 -include vendor/palladium/config/partner_gms.mk
+
+# Themes
+PRODUCT_PACKAGES += \
+    XtendedClearSystemOverlay \
+    XtendedClearSystemUIOverlay \
+    PitchBlackSystemOverlay \
+    PitchBlackSystemUIOverlay \
+    SolarizedDarkSystemOverlay \
+    SolarizedDarkSystemUIOverlay \
+    BakedGreenSystemOverlay \
+    BakedGreenSystemUIOverlay \
+    ChocoXSystemOverlay \
+    ChocoXSystemUIOverlay \
+    MaterialOceanSystemOverlay \
+    MaterialOceanSystemUIOverlay \
+    DarkGreySystemOverlay \
+    DarkGreySystemUIOverlay
