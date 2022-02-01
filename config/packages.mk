@@ -1,5 +1,6 @@
 # Palladium packages
 PRODUCT_PACKAGES += \
+    GamingMode \
     ThemePicker \
     TouchGestures
 
