@@ -39,27 +39,27 @@ palladium: otapackage
 	$(hide) $(SHA256) $(PALLADIUM_TARGET_PACKAGE) | sed "s|$(PRODUCT_OUT)/||" > $(PALLADIUM_TARGET_PACKAGE).sha256sum
 	$(hide) ./vendor/palladium/tools/generate_json_build_info.sh $(PALLADIUM_TARGET_PACKAGE)
 	@echo -e ""
-	@echo -e "${cya}Building ${bldcya}Palladium ! ${txtrst}";
+	@echo -e "${cya}Building ${bldcya} Palladium! ${txtrst}";
 	@echo -e ""
-	@echo -e ${CL_GRN}"=========================Package Complete========================="${CL_GRN}
-	@echo -e ${CL_CYN}"                                                                  "${CL_CYN}
-	@echo -e ${CL_YLW}"            Build Completed Successfully // #StarkCelerity        "${CL_YLW}
-	@echo -e ${CL_CYN}"                                                                  "${CL_CYN}
-	@echo -e ${CL_RED}"******************************************************************"${CL_RED}
-	@echo -e ${CL_CYN}"                                                                  "${CL_CYN}
-	@echo -e ${CL_CYN}"     ____        ____          ___                    ____ _____  "${CL_CYN}
-	@echo -e ${CL_CYN}"    / __ \______/ / __________/ (___  __________     / __ / ___/  "${CL_CYN}
-	@echo -e ${CL_CYN}"   / /_/ / __  / / / __  / __  / / / / / __  __ \   / / / \__ \   "${CL_CYN}
-	@echo -e ${CL_CYN}"  / ____/ /_/ / / / /_/ / /_/ / / /_/ / / / / / /  / /_/ ___/ /   "${CL_CYN}
-	@echo -e ${CL_CYN}" / _/   \____/_/_/\____/\____/_/\____/_/ /_/ /_/   \____/____/    "${CL_CYN}
-	@echo -e ${CL_CYN}"                                                                  "${CL_CYN}
-	@echo -e ${CL_YLW}"                     By:Team Palladium                     	     "${CL_YLW}
-	@echo -e ${CL_CYN}"                                                                  "${CL_CYN}
-	@echo -e ${CL_RED}"******************************************************************"                                                           
+	@echo -e ${CL_RED}"*******************************************"     
+	@echo -e ${CL_GRN} "                                      // "
+	@echo -e ${CL_GRN} "                                      // "
+	@echo -e ${CL_GRN} "                                      // "
+	@echo -e ${CL_GRN} "     //////////           //////////  // "
+	@echo -e ${CL_GRN} "  ////        ////     ***. ****** ***** "
+	@echo -e ${CL_GRN} " ///             //   ** ,,,      ,,,*** "
+	@echo -e ${CL_GRN} ".//              /// ***,,         ,, ** "
+	@echo -e ${CL_GRN} ".** ,,        ,, **   **              ** "
+	@echo -e ${CL_GRN} " *** ,,,,  ,,,, ***   ***            **  "
+	@echo -e ${CL_GRN} " **.****    *****       *****    ****    "
+	@echo -e ${CL_GRN} " **      **                   **         "
+	@echo -e ${CL_GRN} " **                                      "
+	@echo -e ${CL_GRN} " **                                      "
+	@echo -e ${CL_RED}"*******************************************"                                                           
 	@echo -e ${CL_YLW}"Zip: "${CL_YLW} $(PALLADIUM_TARGET_PACKAGE)${CL_YLW}
 	@echo -e ${CL_YLW}"SHA256: "${CL_YLW}" `cat $(PALLADIUM_TARGET_PACKAGE).sha256sum | awk '{print $$1}' `"${CL_YLW}
 	@echo -e ${CL_YLW}"Size:"${CL_YLW}" `du -sh $(PALLADIUM_TARGET_PACKAGE) | awk '{print $$1}' `"${CL_YLW}
 	@echo -e ${CL_YLW}"id:"${CL_YLW}"`sha256sum $(PALLADIUM_TARGET_PACKAGE) | cut -d ' ' -f 1`"${CL_YLW}
-	@echo -e ${CL_GRN}"==================================================================="${CL_GRN}
+	@echo -e ${CL_GRN}"============================================"${CL_GRN}
 
 bacon: palladium
