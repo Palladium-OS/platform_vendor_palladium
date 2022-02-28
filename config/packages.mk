@@ -4,6 +4,12 @@ PRODUCT_PACKAGES += \
     ThemePicker \
     TouchGestures
 
+ifeq ($(PALLADIUM_BUILD_VARIANT), GAPPS)
+    # ThemedIconsOverlay
+    PRODUCT_PACKAGES += \
+        ThemedIconsOverlay
+endif
+
 # Palladium-OS UDFPS icon animations
 EXTRA_UDFPS_ANIMATIONS ?= true
 ifeq ($(EXTRA_UDFPS_ANIMATIONS),true)
