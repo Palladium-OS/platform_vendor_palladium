@@ -1,6 +1,5 @@
 # Palladium packages
 PRODUCT_PACKAGES += \
-    GamingMode \
     ThemePicker \
     TouchGestures
 
@@ -11,11 +10,11 @@ ifeq ($(PALLADIUM_BUILD_VARIANT), GAPPS)
 endif
 
 # Palladium-OS UDFPS icon animations
-EXTRA_UDFPS_ANIMATIONS ?= true
-ifeq ($(EXTRA_UDFPS_ANIMATIONS),true)
-PRODUCT_PACKAGES += \
-    UdfpsResources
-endif
+# EXTRA_UDFPS_ANIMATIONS ?= true
+# ifeq ($(EXTRA_UDFPS_ANIMATIONS),true)
+# PRODUCT_PACKAGES += \
+#     UdfpsResources
+# endif
 
 
 # Extra tools in Palladium
