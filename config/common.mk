@@ -142,7 +142,8 @@ endif
 
 # Config
 PRODUCT_PACKAGES += \
-    SimpleDeviceConfig
+    SimpleDeviceConfig \
+    SettingsIntelligenceGooglePrebuilt
 
 # Storage manager
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
@@ -151,6 +152,10 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 # These packages are excluded from user builds
 PRODUCT_PACKAGES_DEBUG += \
     procmem
+
+# Permissions
+PRODUCT_COPY_FILES += \
+    vendor/palladium/config/permissions/privapp-permissions-palladium-product.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-palladium.xml
 
 # Extra tools
 PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
