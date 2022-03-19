@@ -1,0 +1,15 @@
+//
+// Prebuilt apps for Palladium-OS
+//
+
+// Themedicons
+android_app_import {
+	name: "ThemedIconsOverlay",
+	apk: "ThemedIconsOverlay/ThemedIconsOverlay.apk",
+	presigned: true,
+	dex_preopt: {
+		enabled: false,
+	},
+	privileged: true,
+	product_specific: true
+}
