@@ -6,8 +6,9 @@ if [ "$1" ]; then
     echo "Generating .json"
     file_path=$1
     file_name=$(basename $file_path)
-    device_code=$(echo $file_name | cut -d'-' -f4)
-    build_variant=$(echo $file_name | cut -d'-' -f6)
+    device_code=$(echo $file_name | cut -d'-' -f3)
+    build_variant=$(echo $file_name | cut -d'-' -f5)
+    num_version=$(echo $file_name | cut -d'-' -f2)
     if [ -f $file_path ]; then
         if [[ $file_name == *"OFFICIAL"* ]]; then # only generate for official builds
             file_size=$(stat -c%s $file_path)
@@ -15,7 +16,6 @@ if [ "$1" ]; then
             datetime=$(date +%s)
             id=$(sha256sum $file_path | awk '{ print $1 }')
             link="https://dump.palladiumos.com/${device_code}/${file_name}"
-            num_version=$(grep ro\.palladium\.num\.version ./out/target/product/${device_code}/system/build.prop | cut -d= -f2);
             echo "{" > $file_path.json
             echo "  \"response\": [" >> $file_path.json
             echo "    {" >> $file_path.json
