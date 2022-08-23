@@ -1,38 +1,60 @@
-PRODUCT_VERSION_MAJOR = 20
-PRODUCT_VERSION_MINOR = 0
+# Copyright (C) 2016-2017 AOSiP
+# Copyright (C) 2020 Fluid
+# Copyright (C) 2023 Palladium-OS
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
-ifeq ($(LINEAGE_VERSION_APPEND_TIME_OF_DAY),true)
-    LINEAGE_BUILD_DATE := $(shell date -u +%Y%m%d_%H%M%S)
-else
-    LINEAGE_BUILD_DATE := $(shell date -u +%Y%m%d)
-endif
+# Versioning System
+PALLADIUM_NUM_VER := 3.0
 
-# Set LINEAGE_BUILDTYPE from the env RELEASE_TYPE, for jenkins compat
+TARGET_PRODUCT_SHORT := $(subst palladium_,,$(PALLADIUM_BUILD_TYPE))
 
-ifndef LINEAGE_BUILDTYPE
-    ifdef RELEASE_TYPE
-        # Starting with "LINEAGE_" is optional
-        RELEASE_TYPE := $(shell echo $(RELEASE_TYPE) | sed -e 's|^LINEAGE_||g')
-        LINEAGE_BUILDTYPE := $(RELEASE_TYPE)
+PALLADIUM_BUILD_TYPE ?= UNOFFICIAL
+PALLADIUM_BUILD_VARIANT ?= VANILLA
+
+# Check if the build is actually OFFICIAL
+ifeq ($(filter-out OFFICIAL,$(PALLADIUM_BUILD_TYPE)),)
+  OFFICIAL_DEVICES = $(shell cat vendor/palladium/palladium.devices)
+  FOUND_DEVICE =  $(filter $(PALLADIUM_BUILD), $(OFFICIAL_DEVICES))
+    ifeq ($(FOUND_DEVICE),$(PALLADIUM_BUILD))
+      PALLADIUM_BUILD_TYPE := OFFICIAL
+    else
+      PALLADIUM_BUILD_TYPE := UNOFFICIAL
+      $(error Device is not official "$(PALLADIUM_BUILD)")
     endif
 endif
 
-# Filter out random types, so it'll reset to UNOFFICIAL
-ifeq ($(filter RELEASE NIGHTLY SNAPSHOT EXPERIMENTAL,$(LINEAGE_BUILDTYPE)),)
-    LINEAGE_BUILDTYPE := UNOFFICIAL
-    LINEAGE_EXTRAVERSION :=
+# Only include Updater for official  build
+ifeq ($(filter-out OFFICIAL,$(PALLADIUM_BUILD_TYPE)),)
+    PRODUCT_PACKAGES += \
+        Updater
 endif
 
-ifeq ($(LINEAGE_BUILDTYPE), UNOFFICIAL)
-    ifneq ($(TARGET_UNOFFICIAL_BUILD_ID),)
-        LINEAGE_EXTRAVERSION := -$(TARGET_UNOFFICIAL_BUILD_ID)
-    endif
+# Sign builds if building an OFFICIAL build
+ifeq ($(filter-out OFFICIAL,$(PALLADIUM_BUILD_TYPE)),)
+    PRODUCT_DEFAULT_DEV_CERTIFICATE := $(KEYS_LOCATION)
 endif
 
-LINEAGE_VERSION_SUFFIX := $(LINEAGE_BUILD_DATE)-$(LINEAGE_BUILDTYPE)$(LINEAGE_EXTRAVERSION)-$(LINEAGE_BUILD)
+# Set Gapps Flag
+ifeq ($(USE_GAPPS), true)
+    PALLADIUM_BUILD_VARIANT = GAPPS
+endif
 
-# Internal version
-LINEAGE_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(LINEAGE_VERSION_SUFFIX)
-
-# Display version
-LINEAGE_DISPLAY_VERSION := $(PRODUCT_VERSION_MAJOR)-$(LINEAGE_VERSION_SUFFIX)
+# Set all versions
+BUILD_DATE := $(shell date -u +%Y%m%d)
+BUILD_TIME := $(shell date -u +%H%M)
+PALLADIUM_BUILD_VERSION := $(PALLADIUM_NUM_VER)
+PALLADIUM_VERSION := $(PALLADIUM_BUILD_VERSION)-$(PALLADIUM_BUILD)-$(PALLADIUM_BUILD_TYPE)-$(PALLADIUM_BUILD_VARIANT)-$(BUILD_TIME)-$(BUILD_DATE)
+ROM_FINGERPRINT := Palladium/$(PLATFORM_VERSION)/$(TARGET_PRODUCT_SHORT)/$(BUILD_TIME)
+PALLADIUM_DISPLAY_VERSION := $(PALLADIUM_VERSION)
+RELEASE_TYPE := $(PALLADIUM_BUILD_TYPE)
