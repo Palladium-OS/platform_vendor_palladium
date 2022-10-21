@@ -157,6 +157,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     PalladiumBlackTheme \
     PalladiumThemesStub \
+    NoCombinedIconsOverlay \
     ThemePicker
 
 # Charger
