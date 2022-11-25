@@ -145,6 +145,10 @@ SKIP_BOOT_JARS_CHECK := true
 # Bootanimation
 $(call inherit-product, vendor/palladium/prebuilt/bootanimation/bootanimation.mk)
 
+# BtHelper
+PRODUCT_PACKAGES += \
+    BtHelper
+
 # Palladium packages
 PRODUCT_PACKAGES += \
     PalladiumWallpaperStub \
