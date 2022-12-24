@@ -14,7 +14,7 @@
 # -----------------------------------------------------------------
 # Palladium OTA update package
 
-PALLADIUM_TARGET_PACKAGE := $(PRODUCT_OUT)/$(PALLADIUM_VERSION)-img.zip
+PALLADIUM_TARGET_UPDATEPACKAGE := $(PRODUCT_OUT)/$(PALLADIUM_VERSION)-img.zip
 SHA256 := prebuilts/build-tools/path/$(HOST_PREBUILT_TAG)/sha256sum
 
 ifeq ($(IS_CIENV),true)
@@ -23,9 +23,9 @@ endif
 
 .PHONY: updatepackage
 updatepackage: $(INTERNAL_UPDATE_PACKAGE_TARGET)
-	$(hide) ln -f $(INTERNAL_UPDATE_PACKAGE_TARGET) $(PALLADIUM_TARGET_PACKAGE)
-	$(hide) $(SHA256) $(PALLADIUM_TARGET_PACKAGE) | sed "s|$(PRODUCT_OUT)/||" > $(PALLADIUM_TARGET_PACKAGE).sha256sum
-	$(hide) ./vendor/palladium/tools/generate_json_build_info.sh $(PALLADIUM_TARGET_PACKAGE)
+	$(hide) ln -f $(INTERNAL_UPDATE_PACKAGE_TARGET) $(PALLADIUM_TARGET_UPDATEPACKAGE)
+	$(hide) $(SHA256) $(PALLADIUM_TARGET_UPDATEPACKAGE) | sed "s|$(PRODUCT_OUT)/||" > $(PALLADIUM_TARGET_UPDATEPACKAGE).sha256sum
+	$(hide) ./vendor/palladium/tools/generate_json_build_info.sh $(PALLADIUM_TARGET_UPDATEPACKAGE)
 	@echo -e ""
 	@echo -e "${cya}Building ${bldcya} Palladium fastboot package! ${txtrst}";
 	@echo -e ""
@@ -44,10 +44,10 @@ updatepackage: $(INTERNAL_UPDATE_PACKAGE_TARGET)
 	@echo -e ${CL_GRN} " **                                      "
 	@echo -e ${CL_GRN} " **                                      "
 	@echo -e ${CL_RED}"*******************************************"    
-	@echo -e ${CL_YLW}"Zip: "${CL_YLW} $(PALLADIUM_TARGET_PACKAGE)${CL_YLW}
-	@echo -e ${CL_YLW}"SHA256: "${CL_YLW}" `cat $(PALLADIUM_TARGET_PACKAGE).sha256sum | awk '{print $$1}' `"${CL_YLW}
-	@echo -e ${CL_YLW}"Size:"${CL_YLW}" `du -sh $(PALLADIUM_TARGET_PACKAGE) | awk '{print $$1}' `"${CL_YLW}
-	@echo -e ${CL_YLW}"id:"${CL_YLW}"`sha256sum $(PALLADIUM_TARGET_PACKAGE) | cut -d ' ' -f 1`"${CL_YLW}
+	@echo -e ${CL_YLW}"Zip: "${CL_YLW} $(PALLADIUM_TARGET_UPDATEPACKAGE)${CL_YLW}
+	@echo -e ${CL_YLW}"SHA256: "${CL_YLW}" `cat $(PALLADIUM_TARGET_UPDATEPACKAGE).sha256sum | awk '{print $$1}' `"${CL_YLW}
+	@echo -e ${CL_YLW}"Size:"${CL_YLW}" `du -sh $(PALLADIUM_TARGET_UPDATEPACKAGE) | awk '{print $$1}' `"${CL_YLW}
+	@echo -e ${CL_YLW}"id:"${CL_YLW}"`sha256sum $(PALLADIUM_TARGET_UPDATEPACKAGE) | cut -d ' ' -f 1`"${CL_YLW}
 	@echo -e ${CL_GRN}"============================================"${CL_GRN}
 	@echo -e ""
 
