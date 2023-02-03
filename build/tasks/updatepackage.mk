@@ -21,7 +21,7 @@ ifeq ($(IS_CIENV),true)
     include $(TOP_DIR)vendor/palladium/build/core/colors.mk
 endif
 
-.PHONY: updatepackage
+.PHONY: updatepackage palladium-fastboot
 updatepackage: $(INTERNAL_UPDATE_PACKAGE_TARGET)
 	$(hide) ln -f $(INTERNAL_UPDATE_PACKAGE_TARGET) $(PALLADIUM_TARGET_UPDATEPACKAGE)
 	$(hide) $(SHA256) $(PALLADIUM_TARGET_UPDATEPACKAGE) | sed "s|$(PRODUCT_OUT)/||" > $(PALLADIUM_TARGET_UPDATEPACKAGE).sha256sum
@@ -51,4 +51,4 @@ updatepackage: $(INTERNAL_UPDATE_PACKAGE_TARGET)
 	@echo -e ${CL_GRN}"============================================"${CL_GRN}
 	@echo -e ""
 
-palladium: updatepackage
+palladium-fastboot: updatepackage
