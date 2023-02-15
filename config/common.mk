@@ -266,7 +266,8 @@ PRODUCT_PACKAGES += \
     PalladiumLauncherOverlay \
     CustomPixelLauncherOverlay \
     NavigationBarModeGesturalOverlayFS \
-    NetworkStackOverlay
+    NetworkStackOverlay \
+    NexusLauncherResOverlay
 
 include vendor/palladium/config/version.mk
 
