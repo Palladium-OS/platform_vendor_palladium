@@ -222,7 +222,8 @@ PRODUCT_COPY_FILES += \
 
 # permissions
 PRODUCT_COPY_FILES += \
-    vendor/palladium/config/permissions/privapp-permissions-settings.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-settings.xml
+    vendor/palladium/config/permissions/privapp-permissions-settings.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-settings.xml \
+    vendor/palladium/config/permissions/org.lineageos.health.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/org.lineageos.health.xml 
 
 # rsync
 PRODUCT_PACKAGES += \
