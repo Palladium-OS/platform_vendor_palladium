@@ -161,9 +161,9 @@ PRODUCT_COPY_FILES += \
 # Themes
 PRODUCT_PACKAGES += \
     PalladiumBlackTheme \
-    PalladiumThemesStub \
     NoCombinedIconsOverlay \
-    ThemePicker
+    ThemePicker \
+    ThemesStub
 
 # Charger
 ifeq ($(USE_PIXEL_CHARGER),true)
