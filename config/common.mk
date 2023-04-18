@@ -265,6 +265,7 @@ PRODUCT_PACKAGE_OVERLAYS += \
 PRODUCT_PACKAGES += \
     PalladiumLauncherOverlay \
     CustomPixelLauncherOverlay \
+    DocumentsUIOverlay \
     NavigationBarModeGesturalOverlayFS \
     NetworkStackOverlay \
     NexusLauncherResOverlay
