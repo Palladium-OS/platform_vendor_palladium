@@ -151,7 +151,6 @@ PRODUCT_PACKAGES += \
 
 # Palladium packages
 PRODUCT_PACKAGES += \
-    PalladiumWallpaperStub \
     RepainterServicePriv \
     TouchGestures
 
