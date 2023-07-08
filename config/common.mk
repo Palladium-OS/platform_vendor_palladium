@@ -151,6 +151,7 @@ PRODUCT_PACKAGES += \
 
 # Palladium packages
 PRODUCT_PACKAGES += \
+    ParallelSpace \
     RepainterServicePriv \
     TouchGestures
 
