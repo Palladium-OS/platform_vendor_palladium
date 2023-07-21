@@ -13,7 +13,7 @@ if [ "$1" ]; then
         if [[ $file_name == *"OFFICIAL"* ]]; then # only generate for official builds
             file_size=$(stat -c%s $file_path)
             md5=$(cat "$file_path.md5sum" | cut -d' ' -f1)
-            datetime=$(date +%s)
+            datetime=$(grep ro\.palladium\.build\.datetime ./out/target/product/${device_code}/system/build.prop | cut -d= -f2)
             id=$(sha256sum $file_path | awk '{ print $1 }')
             link="https://dump.palladiumos.com/${device_code}/${file_name}"
             echo "{" > $file_path.json
