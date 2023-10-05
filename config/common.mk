@@ -90,15 +90,15 @@ $(call inherit-product-if-exists, vendor/gms/products/gms.mk)
 endif
 
 # Face Unlock
-TARGET_FACE_UNLOCK_SUPPORTED ?= true
-ifeq ($(TARGET_FACE_UNLOCK_SUPPORTED),true)
-PRODUCT_PACKAGES += \
-    FaceUnlockService
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    ro.face_unlock_service.enabled=$(TARGET_FACE_UNLOCK_SUPPORTED)
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.biometrics.face.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.biometrics.face.xml
-endif
+# TARGET_FACE_UNLOCK_SUPPORTED ?= true
+# ifeq ($(TARGET_FACE_UNLOCK_SUPPORTED),true)
+# PRODUCT_PACKAGES += \
+#     FaceUnlockService
+# PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+#     ro.face_unlock_service.enabled=$(TARGET_FACE_UNLOCK_SUPPORTED)
+# PRODUCT_COPY_FILES += \
+#     frameworks/native/data/etc/android.hardware.biometrics.face.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.biometrics.face.xml
+# endif
 
 # Fonts
 include vendor/palladium/config/fonts.mk
@@ -150,10 +150,10 @@ PRODUCT_PACKAGES += \
     BtHelper
 
 # Palladium packages
-PRODUCT_PACKAGES += \
-    ParallelSpace \
-    RepainterServicePriv \
-    TouchGestures
+# PRODUCT_PACKAGES += \
+#     ParallelSpace \
+#     RepainterServicePriv \
+#     TouchGestures
 
 PRODUCT_COPY_FILES += \
     vendor/palladium/prebuilt/common/etc/init/init.palladium-updater.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.palladium-updater.rc
@@ -166,11 +166,11 @@ PRODUCT_PACKAGES += \
     libtextclassifier_lang_id_model
 
 # Themes
-PRODUCT_PACKAGES += \
-    PalladiumBlackTheme \
-    NoCombinedIconsOverlay \
-    ThemePicker \
-    ThemesStub
+# PRODUCT_PACKAGES += \
+#     PalladiumBlackTheme \
+#     NoCombinedIconsOverlay \
+#     ThemePicker \
+#     ThemesStub
 
 # Charger
 ifeq ($(USE_PIXEL_CHARGER),true)
