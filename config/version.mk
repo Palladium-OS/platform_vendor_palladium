@@ -15,7 +15,7 @@
 # limitations under the License.
 
 # Versioning System
-PALLADIUM_NUM_VER := 3.0
+PALLADIUM_NUM_VER := 4.0
 
 TARGET_PRODUCT_SHORT := $(subst palladium_,,$(PALLADIUM_BUILD_TYPE))
 
