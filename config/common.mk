@@ -146,9 +146,8 @@ PRODUCT_PACKAGES += \
     BtHelper
 
 # Palladium packages
-# PRODUCT_PACKAGES += \
-#     ParallelSpace \
-#     RepainterServicePriv \
+PRODUCT_PACKAGES += \
+    RepainterServicePriv
 #     TouchGestures
 
 PRODUCT_COPY_FILES += \
@@ -162,8 +161,8 @@ PRODUCT_PACKAGES += \
     libtextclassifier_lang_id_model
 
 # Themes
-# PRODUCT_PACKAGES += \
-#     PalladiumBlackTheme \
+PRODUCT_PACKAGES += \
+    PalladiumBlackTheme \
 #     NoCombinedIconsOverlay \
 #     ThemePicker \
 #     ThemesStub
