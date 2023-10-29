@@ -147,8 +147,8 @@ PRODUCT_PACKAGES += \
 
 # Palladium packages
 PRODUCT_PACKAGES += \
-    RepainterServicePriv
-#     TouchGestures
+    RepainterServicePriv \
+    TouchGestures
 
 PRODUCT_COPY_FILES += \
     vendor/palladium/prebuilt/common/etc/init/init.palladium-updater.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.palladium-updater.rc
