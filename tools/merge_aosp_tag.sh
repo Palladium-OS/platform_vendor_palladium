@@ -13,9 +13,9 @@ blu=$'\e[1;34m'
 end=$'\e[0m'
 
 REMOTE="palladium"
-BRANCH="13"
+BRANCH="14"
 
-BLACKLIST="external/arm-optimized-routines external/jemalloc_new external/libjpeg-turbo external/zlib packages/apps/DeskClock" 
+BLACKLIST="external/arm-optimized-routines external/jemalloc_new external/libjpeg-turbo external/zlib packages/apps/DeskClock prebuilts/build-tools" 
 
 # verify tag
 if [ -z "$1" ]; then
