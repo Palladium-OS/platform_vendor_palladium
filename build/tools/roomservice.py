@@ -45,7 +45,7 @@ except ImportError:
 DEBUG = False
 
 custom_local_manifest = ".repo/local_manifests/palladium.xml"
-custom_default_revision =  os.getenv('ROOMSERVICE_DEFAULT_BRANCH', '13')
+custom_default_revision =  os.getenv('ROOMSERVICE_DEFAULT_BRANCH', '14')
 custom_dependencies = "palladium.dependencies"
 org_manifest = "palladium-devices"  # leave empty if org is provided in manifest
 org_display = "PalladiumOS-Devices"  # needed for displaying
