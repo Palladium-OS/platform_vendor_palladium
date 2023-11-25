@@ -16,7 +16,7 @@ if [ "$1" ]; then
             md5=$(cat "$file_path.md5sum" | cut -d' ' -f1)
             datetime=$(grep ro\.palladium\.build\.datetime ./out/target/product/${device_code}/system/build.prop | cut -d= -f2)
             id=$(sha256sum $file_path | awk '{ print $1 }')
-            link="https://github.com/PalladiumOS-Devices/device_${device_brand}_${device_code}/releases/download/${num_version}/${file_name}"
+            link="https://api.palladiumos.org/download/${device_code}/${file_name}"
             echo "{" > $file_path.json
             echo "  \"response\": [" >> $file_path.json
             echo "    {" >> $file_path.json
